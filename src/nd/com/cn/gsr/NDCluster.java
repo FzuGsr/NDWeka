@@ -1,5 +1,6 @@
 package nd.com.cn.gsr;
 
+import nd.com.cn.gsr.tools.WekaTools;
 import weka.clusterers.EM;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
@@ -11,7 +12,7 @@ import java.io.FileReader;
  */
 public class NDCluster {
     public static void main(String args[]) throws Exception {
-        Tools t = new Tools();
+        WekaTools t = new WekaTools();
         int stringIndex[] = {1,2,3};
         Instances dataInstances = t.csvToIns("data/data1.csv", stringIndex,null);
         t.showInstances(dataInstances);

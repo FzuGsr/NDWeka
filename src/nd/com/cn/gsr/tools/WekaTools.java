@@ -1,4 +1,4 @@
-package nd.com.cn.gsr;
+package nd.com.cn.gsr.tools;
 
 import weka.core.Attribute;
 import weka.core.Instance;
@@ -10,28 +10,31 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * ¹¤¾ßÀà£º
- * ¶ÁÈ¡ÎÄ¼ş×ª»»Îªweka¿ÉÒÔÊ¶±ğµÄinstances
+ * å·¥å…·ç±»ï¼š
+ * è¯»å–æ–‡ä»¶è½¬æ¢ä¸ºwekaå¯ä»¥è¯†åˆ«çš„instances
+ *
  * Created by Guosongrong on 2016/7/29 0029.
  */
-public  class Tools {
+public class WekaTools {
 
-    /***
-     * ½«InstancesÊı¾İÒ»ĞĞÒ»ĞĞ´òÓ¡Êä³ö
-     * @param dataIns Òª´òÓ¡µÄÊµÀı Instances
+    /**
+     * å°†Instancesæ•°æ®ä¸€è¡Œä¸€è¡Œæ‰“å°è¾“å‡º
+     *
+     * @param dataIns è¦æ‰“å°çš„å®ä¾‹ Instances
      */
-    public static void showInstances(Instances dataIns){
-        for (int i = 0; i < dataIns.numInstances(); i++){
-            System.out.println("Row "+i+1+" : "+dataIns.instance(i));
+    public static void showInstances(Instances dataIns) {
+        for (int i = 0; i < dataIns.numInstances(); i++) {
+            System.out.println("Row " + i + 1 + " : " + dataIns.instance(i));
         }
     }
+
     /**
-     * ¶ÁÈ¡CSVÎÄ¼ş£¬×ª»»ÎªInstances
+     * è¯»å–CSVæ–‡ä»¶ï¼Œè½¬æ¢ä¸ºInstances
      *
-     * @param fileName     ÎÄ¼şÃû
-     * @param stringIndexs ×Ö·ûĞÍÊôĞÔÏÂ±ê ´Ó0¿ªÊ¼¼ÆËã
-     * @param dateIndex    ÈÕÆÚĞÍÊôĞÔÏÂ±ê ´Ó0 ¿ªÊ¼¼ÆËã
-     * @return ·µ»ØÊı¾İ¼¯Instances
+     * @param fileName     æ–‡ä»¶å
+     * @param stringIndexs å­—ç¬¦å‹å±æ€§ä¸‹æ ‡ ä»0å¼€å§‹è®¡ç®—
+     * @param dateIndex    æ—¥æœŸå‹å±æ€§ä¸‹æ ‡ ä»0 å¼€å§‹è®¡ç®—
+     * @return è¿”å›æ•°æ®é›†Instances
      */
     public Instances csvToIns(String fileName, int stringIndexs[], int dateIndex[]) {
         CSVLoader csvLoader = new CSVLoader();
@@ -39,11 +42,11 @@ public  class Tools {
         try {
             csvLoader.setFile(new File(fileName));
             for (int i = 0; i < stringIndexs.length; i++) {
-                csvLoader.setStringAttributes(stringIndexs[i] + "");//ÉèÖÃ×Ö·ûÊôĞÔ
+                csvLoader.setStringAttributes(stringIndexs[i] + "");//è®¾ç½®å­—ç¬¦å±æ€§
             }
             if (null != dateIndex) {
                 for (int i = 0; i < dateIndex.length; i++) {
-                    csvLoader.setDateAttributes(dateIndex[i] + "");//ÉèÖÃÈÕÆÚĞÍÊôĞÔ
+                    csvLoader.setDateAttributes(dateIndex[i] + "");//è®¾ç½®æ—¥æœŸå‹å±æ€§
                 }
             }
             dataIns = csvLoader.getDataSet();
@@ -55,8 +58,8 @@ public  class Tools {
 
 
     /**
-     * Ö»ÄÜ¹»×ª»»ÊıÖµĞÍÊôĞÔ
-     * ¶ÁÈ¡csvÎÄ¼ş£¬½«ÊıÖµĞÍÊôĞÔ²¢×ª»»Îªinstances
+     * åªèƒ½å¤Ÿè½¬æ¢æ•°å€¼å‹å±æ€§
+     * è¯»å–csvæ–‡ä»¶ï¼Œå°†æ•°å€¼å‹å±æ€§å¹¶è½¬æ¢ä¸ºinstances
      *
      * @param fileName
      * @return
@@ -68,14 +71,14 @@ public  class Tools {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
             ArrayList<Attribute> attrs = new ArrayList<Attribute>();
             String attrName;
-            attrName = br.readLine();//Ê×ĞĞÎª±êÌâĞĞ£¬×÷ÎªÊôĞÔÃû³Æ
+            attrName = br.readLine();//é¦–è¡Œä¸ºæ ‡é¢˜è¡Œï¼Œä½œä¸ºå±æ€§åç§°
             String tokens[] = attrName.split(",");
             for (int i = 0; i < tokens.length; i++) {
                 Attribute attr = new Attribute(tokens[i]);
-                attrs.add(attr);//Ìí¼ÓÊôĞÔ
+                attrs.add(attr);//æ·»åŠ å±æ€§
             }
-            resultInstances = new Instances("newdata", attrs, 0);//¹¹½¨instances£¬³õÊ¼ÈİÁ¿Îª0
-            //Ìí¼ÓÕæÊµÊı¾İ
+            resultInstances = new Instances("newdata", attrs, 0);//æ„å»ºinstancesï¼Œåˆå§‹å®¹é‡ä¸º0
+            //æ·»åŠ çœŸå®æ•°æ®
             String valueString = null;
             while ((valueString = br.readLine()) != null) {
                 tokens = valueString.split(",");
@@ -92,5 +95,8 @@ public  class Tools {
         return resultInstances;
 
     }
+
+
+
 
 }

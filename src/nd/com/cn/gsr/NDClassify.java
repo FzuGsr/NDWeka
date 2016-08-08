@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Weka·ÖÀàËã·¨
+ * Wekaåˆ†ç±»ç®—æ³•
  * Created by Guosongrong on 2016/7/29 0029.
  */
 public class NDClassify {
@@ -20,7 +20,7 @@ public class NDClassify {
         try {
             arffLoader.setFile(inputFile);
             Instances dataInstances = arffLoader.getDataSet();
-//            Tools.showInstances(dataInstances);
+//            WekaTools.showInstances(dataInstances);
 
             NDClassify ndClassify = new NDClassify();
             ndClassify.ndClassify(dataInstances, dataInstances);
@@ -29,6 +29,11 @@ public class NDClassify {
         }
     }
 
+    /**
+     * æ„å»ºåˆ†ç±»ç®—æ³•
+     * @param trainInstances
+     * @param testInstances
+     */
     public void ndClassify(Instances trainInstances, Instances testInstances) {
         J48 classifier = new J48();
 //        RandomForest classifier = new RandomForest();
@@ -42,12 +47,12 @@ public class NDClassify {
             Evaluation evalution = new Evaluation(trainInstances);
             evalution.evaluateModel(classifier, testInstances);
 //            System.out.println(evalution.errorRate());
-//            //ÓÃÊ®ÕÛ½»²æÑéÖ¤
+//            //ç”¨åæŠ˜äº¤å‰éªŒè¯
 //            evalution.crossValidateModel(classifier, trainInstances, 10, new Random(1));
 
-            System.out.println(evalution.toSummaryString());//Êä³ö×Ü½áĞÅÏ¢
-            System.out.println(evalution.toClassDetailsString());//Êä³ö·ÖÀàÏêÏ¸ĞÅÏ¢
-            System.out.println(evalution.toMatrixString());//Êä³ö·ÖÀàµÄ»ìÏı¾ØÕó
+            System.out.println(evalution.toSummaryString());//è¾“å‡ºæ€»ç»“ä¿¡æ¯
+            System.out.println(evalution.toClassDetailsString());//è¾“å‡ºåˆ†ç±»è¯¦ç»†ä¿¡æ¯
+            System.out.println(evalution.toMatrixString());//è¾“å‡ºåˆ†ç±»çš„æ··æ·†çŸ©é˜µ
             int rightCount = 0;
             for (int i = 0; i < testInstances.numInstances(); i++) {
                 if (classifier.classifyInstance(testInstances.instance(i)) == testInstances.instance(i).classValue())
