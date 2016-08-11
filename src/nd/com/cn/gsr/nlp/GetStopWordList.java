@@ -1,6 +1,8 @@
 package nd.com.cn.gsr.nlp;
 
 /**
+ * 获取停用词
+ * 从文件中获取停用词，可供其他类进行调用
  * Created by Guosongrong on 2016/8/5 0005.
  */
 import java.io.BufferedReader;

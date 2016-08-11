@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="weka" level="project" />
+    <orderEntry type="library" name="weka1" level="project" />
+    <orderEntry type="library" name="ansj_seg-5.0.0-all-in-one" level="project" />
   </component>
 </module>

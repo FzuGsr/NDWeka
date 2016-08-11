@@ -6,6 +6,7 @@ import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.library.UserDefineLibrary;
 import org.ansj.recognition.impl.NatureRecognition;
+import org.ansj.splitWord.analysis.NlpAnalysis;
 import org.ansj.splitWord.analysis.ToAnalysis;
 
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class DynamicWordDemo {
         System.out.println(parse);
         /*用户自定义分词*/
         UserDefineLibrary.insertWord("陆金所", "userDefine", 1000);
-        parse = ToAnalysis.parse("陆金所，全称上海陆家嘴国际金融资产交易市场股份有限公司，隶属于中国平安集团，是中国最大的网络投融资平台之一，2011年9月在上海注册成立，注册资本金8.37亿元，总部设在上海陆家嘴。 陆金所是上海唯一一家通过国务院交易场所清理整顿的金融资产交易平台。");
+        parse = NlpAnalysis.parse("陆金所，全称上海陆家嘴国际金融资产交易市场股份有限公司，隶属于中国平安集团，是中国最大的网络投融资平台之一，2011年9月在上海注册成立，注册资本金8.37亿元，总部设在上海陆家嘴。 陆金所是上海唯一一家通过国务院交易场所清理整顿的金融资产交易平台。");
         System.out.println(parse);
 
         /*关键词的提取*/

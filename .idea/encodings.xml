@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/chinese_stopword.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/nd/com/cn/gsr/NDClassify.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/nd/com/cn/gsr/NDCluster.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/nd/com/cn/gsr/nlp/DynamicWordDemo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/nd/com/cn/gsr/nlp/GetStopWordList.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/nd/com/cn/gsr/nlp/WeiboProcessing.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
